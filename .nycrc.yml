@@ -12,4 +12,5 @@ exclude: [
   # '**/*.spec.js',
   # '**/*healthCheck.js',
   # '**/*index.js',
+  '**/*Route.js'
 ]

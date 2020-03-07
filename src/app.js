@@ -1,7 +1,25 @@
 require('./config/log');
-const log = require('log4js').getLogger('app');
+const config = require('./config/env');
 
-function start(){
-	log.info('App started successfully');
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+
+// router
+const authRouter = require('./components/routes/authRoute');
+
+const app = express();
+
+app.set('view engine', 'ejs');
+
+if (config.app.env != 'prod') {
+	app.use(morgan('dev'));
 }
-start();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cors());
+
+app.use('/', authRouter);
+
+module.exports = app;
