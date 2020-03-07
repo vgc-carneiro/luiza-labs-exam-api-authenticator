@@ -1,0 +1,16 @@
+{
+  "name": "api-authenticator",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -r dotenv/config ./src/app.js dotenv_config_path=./.env"
+  },
+  "author": "Vinicius Carneiro",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "log4js": "^6.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.1"
+  }
+}
