@@ -4,8 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "nodemon -r dotenv/config ./src/app.js dotenv_config_path=./.env",
-	"test": "jasmine",
-	"cover": "nyc jasmine"
+    "test": "jasmine",
+    "cover": "nyc jasmine",
+    "lint": "./node_modules/.bin/eslint src/"
   },
   "author": "Vinicius Carneiro",
   "dependencies": {
@@ -17,9 +18,18 @@
     "jasmine": "^3.5.0",
     "jasmine-console-reporter": "^3.1.0",
     "jasmine-reporters": "^2.3.2",
-    "nyc": "^14.1.1"
+    "nyc": "^14.1.1",
+    "eslint": "^6.7.2",
+    "eslint-plugin-node": "^10.0.0",
+    "husky": "^4.2.3"
   },
   "files": [
     "components/*"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test && npm run lint",
+      "pre-push": "npm test && npm run lint"
+    }
+  }
 }
