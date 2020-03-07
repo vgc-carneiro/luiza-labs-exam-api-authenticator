@@ -1,12 +1,35 @@
 const app = require('../../app');
 const http = require('http');
+const { createTerminus } = require('@godaddy/terminus');
 const config = require('../env');
 const debug = require('debug')('modelo-express:server');
+const service = require('../../components/services/tokenService');
 
 var port = config.app.port;
 app.set('port', port);
 
 var server = http.createServer(app);
+
+function onSignal() {
+	console.log('server is starting cleanup');
+}
+
+async function onHealthCheck() {
+	return new Promise((resolve, reject) => {
+		let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWZlcmVuY2UiOiJzeXN0ZW1PcmlnaW4iLCJyb2xlIjoic2lnbmVyIiwiaWF0IjoxNTgzNTQ4NTcyLCJleHAiOjE2NDQwMjg1NzJ9.C3-ccSzLfmaF727UqyHMki5NhEQFM4k1o6ifsVxr_iY';
+		service.decodeJsonWebToken(token).then(() => {
+			resolve();
+		}, (e) => {
+			reject(e);
+		});
+	});
+}
+
+createTerminus(server, {
+	signal: 'SIGINT',
+	healthChecks: { '/healthcheck': onHealthCheck },
+	onSignal
+})
 
 server.listen(port);
 server.on('error', onError);
