@@ -3,14 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon -r dotenv/config ./src/app.js dotenv_config_path=./.env",
+    "dev": "nodemon -r dotenv/config ./src/config/bin/www dotenv_config_path=./.env",
     "test": "jasmine",
     "cover": "nyc jasmine",
     "lint": "./node_modules/.bin/eslint src/"
   },
   "author": "Vinicius Carneiro",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
+    "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.1.2"
   },
@@ -22,7 +24,8 @@
     "nyc": "^14.1.1",
     "eslint": "^6.7.2",
     "eslint-plugin-node": "^10.0.0",
-    "husky": "^4.2.3"
+    "husky": "^4.2.3",
+    "morgan": "^1.9.1"
   },
   "files": [
     "components/*"
