@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon -r dotenv/config ./src/config/bin/www dotenv_config_path=./.env",
+	"dev": "nodemon -r dotenv/config ./src/config/bin/www dotenv_config_path=./.env",
+	"start": "node ./src/config/bin/www",
     "test": "jasmine",
     "cover": "nyc jasmine",
     "lint": "./node_modules/.bin/eslint src/"
