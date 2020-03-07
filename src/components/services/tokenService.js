@@ -1,4 +1,4 @@
-const log = require('log4js').getLogger('tokenService.js');
+const log = require('log4js').getLogger('tokenService');
 const config = require('../../config/env');
 const jwt = require('jsonwebtoken');
 
