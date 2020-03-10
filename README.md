@@ -65,6 +65,6 @@ Rodando o projeto com DOCKER:
         Criar imagem: <code>docker build -t luiza-labs/api-authenticator .</code>
     </li>
     <li>
-        Rodar a imagem: <code>docker run -p 3000:3000 luiza-labs/api-authenticator</code>
+        Rodar a imagem: <code>docker run -p 3001:3001 luiza-labs/api-authenticator</code>
     </li>
 </ul>
